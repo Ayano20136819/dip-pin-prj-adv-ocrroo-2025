@@ -3,11 +3,10 @@
 Put your design documentation in this folder.
 This should include rough notes from the familiarization phase.
 
-Include the following in week1:
 
 ## Persona
 
-Write a brief persona of your user using design thinking. Use the following template:
+Write a brief persona of your user using design thinking. You can use the following template:
 
 - **Name**: [Name of the user]
 - **Age**: [Age of the user]
@@ -46,7 +45,3 @@ What are the UI interaction patterns you will use in your project?
 ## AI Prompts
 
 Write down any AI prompts you came up with after your first session
-
-## Technology Stack
-
-What technologies are you thinking about using
