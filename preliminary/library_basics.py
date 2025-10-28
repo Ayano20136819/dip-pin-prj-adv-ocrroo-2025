@@ -16,6 +16,9 @@ from pathlib import Path
 import cv2
 import numpy as np
 from PIL import Image
+import pytesseract
+
+pytesseract.pytesseract.tesseract_cmd = r'C:\Users\SASAKA.TDM\source\repo\tesseract\tesseract.exe'
 
 
 VID_PATH = Path("../resources/oop.mp4")
@@ -116,6 +119,13 @@ class CodingVideo:
       image.save(output_path)
 
 
+    def image_to_text(self):
+        img_cv = cv2.imread('../resources/output.png')
+        img_rgb = cv2.cvtColor(img_cv, cv2.COLOR_BGR2RGB)
+        return pytesseract.image_to_string(img_rgb)
+
+
+
 
 
 
@@ -126,6 +136,8 @@ def test():
     oop = CodingVideo("../resources/oop.mp4")
     print(oop)
     oop.save_as_image(42)
+    print(oop.image_to_text())
+
 
 if __name__ == '__main__':
     test()
