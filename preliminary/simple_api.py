@@ -86,3 +86,6 @@ def video_frame(vid: str, t: float):
       video.capture.release()
 
 # TODO: add enpoint to get ocr e.g. /video/{vid}/frame/{t}/ocr
+@app.get("/video/{vid}/frame/{t}/ocr", response_class=Response)
+def ocr():
+    ...
