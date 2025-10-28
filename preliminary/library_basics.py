@@ -15,22 +15,28 @@ Make sure you read the docstrings C.A.R.E.F.U.L.Y (yes, I took the L to check th
 from pathlib import Path
 import cv2
 import numpy as np
+from PIL import Image
 
 
-VID_PATH = Path("resources/name-of-vid-given-to-you-by-instructor.mp4")
+VID_PATH = Path("../resources/oop.mp4")
+OUT_PATH = Path("../resources/")
 
 class CodingVideo:
     capture: cv2.VideoCapture
 
 
     def __init__(self, video: Path | str):
-        self.capture = ... # You complete me!
+        self.capture = cv2.VideoCapture(video)
         if not self.capture.isOpened():
             raise ValueError(f"Cannot open {video}")
+        """
+         FPS (frame per second)
+         Duration(s) = total frames / FPS 
+        """
 
-        self.fps = ...
-        self.frame_count = ...
-        self.duration = ...
+        self.fps = self.capture.get(cv2.CAP_PROP_FPS)
+        self.frame_count = self.capture.get(cv2.CAP_PROP_FRAME_COUNT)
+        self.duration = round(self.frame_count / self.fps / 60, 2)
 
 
     def __str__(self) -> str:
@@ -45,9 +51,16 @@ class CodingVideo:
         ----------
         https://docs.opencv.org/3.4/d4/d15/group__videoio__flags__base.html#gaeb8dd9c89c10a5c63c139bf7c4f5704d
         """
+        info_string = ('Current video has the following properties:\n' +
+                       f'FPS: {self.fps}\n' +
+                       f'Total frames: {self.frame_count}\n' +
+                       f'Duration(m): {self.duration}')
+
+        return info_string
 
     def get_frame_number_at_time(self, seconds: int) -> int:
         """Given a time in seconds, returns the value of the nearest frame"""
+        return int(seconds * self.capture.get(cv2.CAP_PROP_FPS))
 
 
     def get_frame_rgb_array(self, frame_number: int) -> np.ndarray:
@@ -62,6 +75,13 @@ class CodingVideo:
         # TODO: Find a tutorial on OpenCV that demonstrates color space conversion
 
         """
+        self.capture.set(cv2.CAP_PROP_POS_FRAMES, frame_number)
+        ret, frame = self.capture.read()
+        if not ret:
+            raise ValueError(f"Invalid read {frame_number}")
+        return cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+
+
 
     def get_image_as_bytes(self, seconds: int) -> bytes:
         self.capture.set(cv2.CAP_PROP_POS_FRAMES, self.get_frame_number_at_time(seconds))
@@ -84,9 +104,26 @@ class CodingVideo:
 
 
       """
+      if type(output_path) is str:
+            output_path = OUT_PATH/output_path
+
+      frame = self.get_frame_number_at_time(seconds)
+      self.capture.set(cv2.CAP_PROP_POS_FRAMES, frame-1)
+      ok, frame = self.capture.read()
+      if not ok:
+            raise ValueError("Unable to read frame from file")
+      image = Image.fromarray(frame)
+      image.save(output_path)
+
+
+
+
+
+
+
 def test():
     """Try out your class here"""
-    oop = CodingVideo("resources/oop.mp4")
+    oop = CodingVideo("../resources/oop.mp4")
     print(oop)
     oop.save_as_image(42)
 
