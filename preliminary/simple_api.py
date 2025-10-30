@@ -4,13 +4,15 @@ Drive the API to complete "interprocess communication"
 
 Requirements
 """
+import io
 
+import pytesseract
+from PIL import Image
 from fastapi import FastAPI, HTTPException
 from fastapi import Response
 from pydantic import BaseModel
-from pathlib import Path
 from library_basics import CodingVideo
-
+from pathlib import Path
 
 app = FastAPI()
 
@@ -18,8 +20,9 @@ app = FastAPI()
 # We'll create a lightweight "database" for our videos
 # You can add uploads later (not required for assessment)
 # For now, we will just hardcode are samples
+# demo -> video ID, Path -> file path
 VIDEOS: dict[str, Path] = {
-    "demo": Path("../resources/oop.mp4")
+    "demo": Path(__file__).parent.parent / "resources" / "oop.mp4"
 }
 
 class VideoMetaData(BaseModel):
@@ -83,9 +86,17 @@ def video_frame(vid: str, t: float):
         video = _open_vid_or_404(vid)
         return Response(content=video.get_image_as_bytes(t), media_type="image/png")
     finally:
-      video.capture.release()
+        video.capture.release()
+
 
 # TODO: add enpoint to get ocr e.g. /video/{vid}/frame/{t}/ocr
 @app.get("/video/{vid}/frame/{t}/ocr", response_class=Response)
-def ocr():
-    ...
+def ocr(vid: str, t: float):
+    video = _open_vid_or_404(vid)
+    try:
+        img_bytes = video.get_image_as_bytes(t)
+        img = Image.open(io.BytesIO(img_bytes))
+        text = pytesseract.image_to_string(img, lang="eng")
+        return text
+    finally:
+        video.capture.release()

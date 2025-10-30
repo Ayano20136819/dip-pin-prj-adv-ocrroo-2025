@@ -18,7 +18,12 @@ import numpy as np
 from PIL import Image
 import pytesseract
 
-pytesseract.pytesseract.tesseract_cmd = r'C:\Users\SASAKA.TDM\source\repo\tesseract\tesseract.exe'
+# Home
+pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+
+# TAFE PC
+# pytesseract.pytesseract.tesseract_cmd = r'C:\Users\SASAKA.TDM\source\repo\tesseract\tesseract.exe'
+
 
 
 VID_PATH = Path("../resources/oop.mp4")
@@ -39,7 +44,7 @@ class CodingVideo:
 
         self.fps = self.capture.get(cv2.CAP_PROP_FPS)
         self.frame_count = self.capture.get(cv2.CAP_PROP_FRAME_COUNT)
-        self.duration = round(self.frame_count / self.fps / 60, 2)
+        self.duration = round(self.frame_count / self.fps)
 
 
     def __str__(self) -> str:
@@ -57,7 +62,7 @@ class CodingVideo:
         info_string = ('Current video has the following properties:\n' +
                        f'FPS: {self.fps}\n' +
                        f'Total frames: {self.frame_count}\n' +
-                       f'Duration(m): {self.duration}')
+                       f'Duration(s): {self.duration}')
 
         return info_string
 

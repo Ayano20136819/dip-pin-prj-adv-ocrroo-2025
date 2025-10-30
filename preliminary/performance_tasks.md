@@ -106,9 +106,11 @@ FastAPI will allow us to enable communication with our OCR service from other pr
 5. Confirm that a list of videos and URLs is returned by copying the output below:
 > {"count":1,"videos":[{"id":"demo","path":"..\\resources\\oop.mp4","_links":{"self":"/video/demo","frame_example":"/video/demo/frame/1.0"}}]}
 6. What are the names of the two processes that just communicated?
->
+> The two processes that just communicates are curl (client) and FastAPI (server).
 6. Modify the simple_api.py so that it works correctly with your implementation and complete any TODO markers
 7. Demonstrate the use of at least two other end points below:
->
->
->
+> $ curl -X 'GET'   'http://127.0.0.1:8000/video/demo/frame/200/ocr'   -H 'accept: */*'
+> ![200s.png](../resources/200s.png)
+> 
+> curl -X 'GET'   'http://127.0.0.1:8000/video/demo/frame/350/ocr'   -H 'accept: */*'
+> ![350s.png](../resources/350s.png)
