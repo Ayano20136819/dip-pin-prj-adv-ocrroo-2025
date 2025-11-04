@@ -8,13 +8,13 @@ This should include rough notes from the familiarization phase.
 
 Write a brief persona of your user using design thinking. You can use the following template:
 
-- **Name**: [Name of the user]
-- **Age**: [Age of the user]
-- **Occupation**: [Occupation of the user]
-- **Location**: [Location of the user]
-- **Goals**: [Goals of the user]
-- **Frustrations**: [Frustrations of the user]
-- **Motivations**: [Motivations of the user]
+- **Name**: [Oliver]
+- **Age**: [24]
+- **Occupation**: [Student]
+- **Location**: [Perth]
+- **Goals**: [He wants to study programming using tutorial videos and try sample code.]
+- **Frustrations**: [He cannot understand everything with just audio because tutorial just displays code on the screen.]
+- **Motivations**: [Align with working from home]
 - **Technology**: [Technology used by the user]
 - **Experience**: [Experience of the user]
 - **Personality**: [Personality of the user]

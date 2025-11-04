@@ -96,7 +96,7 @@ def ocr(vid: str, t: float):
     try:
         img_bytes = video.get_image_as_bytes(t)
         img = Image.open(io.BytesIO(img_bytes))
-        text = pytesseract.image_to_string(img, lang="eng")
+        text = pytesseract.image_to_string(img)
         return text
     finally:
         video.capture.release()

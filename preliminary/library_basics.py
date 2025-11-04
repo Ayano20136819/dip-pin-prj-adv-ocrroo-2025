@@ -19,10 +19,10 @@ from PIL import Image
 import pytesseract
 
 # Home
-pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+#pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
 # TAFE PC
-# pytesseract.pytesseract.tesseract_cmd = r'C:\Users\SASAKA.TDM\source\repo\tesseract\tesseract.exe'
+pytesseract.pytesseract.tesseract_cmd = r'C:\Users\SASAKA.TDM\source\repo\tesseract\tesseract.exe'
 
 
 
