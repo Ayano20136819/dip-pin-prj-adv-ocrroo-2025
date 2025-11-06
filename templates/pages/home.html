@@ -16,17 +16,46 @@
 {% block main %}
 
 <section class="flex flex-col items-center">
-    <video id="videoPlayer" width="320" height="240" controls
-    class="w-2xl object-cover object-center p-5">
+    <video id="videoPlayer" width="640" height="380" controls
+    class="object-cover object-center p-5">
       <source id="videoSource" type="video/mp4">
     </video>
 
-    <p class="p-4 font-semibold">Please select a video</p>
+    <div class="flex flex-row justify-around item-center">
+        <p class="m-2 font-semibold">Please select a video</p>
 
     <input id="videoInput" type="file" accept="video/*"
          class="bg-stone-500 hover:bg-stone-700 text-white font-bold p-2 rounded cursor-pointer"/>
+    </div>
 
 
+</section>
+
+<section class="flex flex-col items-center">
+    <div class="w-full flex flex-row justify-around">
+        <a href="#"
+    class="bg-stone-500 hover:bg-stone-700 text-white font-bold p-2 rounded cursor-pointer">
+        Play a Video</a>
+    <a href="#"
+    class="bg-stone-500 hover:bg-stone-700 text-white font-bold p-2 rounded cursor-pointer">
+        Capture a frame</a>
+    </div>
+
+
+    <div>
+        <p>TimeStamp</p>
+        <p>00:00</p>
+        Show outputs
+    </div>
+
+    <div class="w-full flex flex-row justify-around">
+        <a href="#"
+        class="bg-stone-500 hover:bg-stone-700 text-white font-bold p-2 rounded cursor-pointer">
+            Read a Output</a>
+        <a href="#"
+        class="bg-stone-500 hover:bg-stone-700 text-white font-bold p-2 rounded cursor-pointer">
+            Save to file</a>
+    </div>
 </section>
 
 
