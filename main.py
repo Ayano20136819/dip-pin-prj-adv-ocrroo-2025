@@ -13,12 +13,37 @@ from fastapi.responses import HTMLResponse
 from fastapi import Response
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
+from fastapi.staticfiles import StaticFiles
+
 from preliminary.library_basics import CodingVideo
 from pathlib import Path
 
 app = FastAPI(title="OCRROO")
 
+BASE_PATH = Path(__file__).parent
+print(BASE_PATH)
+
+app.mount("/static",
+          StaticFiles(directory="static"),
+          name="static")
+
+app.mount("/css",
+          StaticFiles(directory="static/css"),
+          name="css")
+app.mount("/js",
+          StaticFiles(directory="static/js"),
+          name="js")
+
+
 templates = Jinja2Templates(directory="templates")
+
+
+@app.get("/", response_class=HTMLResponse)
+async def home(request: Request):
+    return templates.TemplateResponse(
+        request = request,
+        name="pages/home.html",
+    )
 
 
 # We'll create a lightweight "database" for our videos
@@ -26,7 +51,7 @@ templates = Jinja2Templates(directory="templates")
 # For now, we will just hardcode are samples
 # demo -> video ID, Path -> file path
 VIDEOS: dict[str, Path] = {
-    "demo": Path(__file__).parent / "resources" / "oop.mp4"
+    "demo": BASE_PATH / "resources" / "oop.mp4"
 }
 
 class VideoMetaData(BaseModel):
@@ -70,12 +95,7 @@ def _meta(video: CodingVideo) -> VideoMetaData:
     )
 
 
-@app.get("/", response_class=HTMLResponse)
-async def home(request: Request):
-    return templates.TemplateResponse(
-        request = request,
-        name="pages/home.html",
-    )
+
 
 
 

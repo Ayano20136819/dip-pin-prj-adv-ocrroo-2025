@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %} DEFAULT TITLE {% endblock %}</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/output.css') }}">
+
+
+    <!-- Font Awesome v6 -->
+    <script src="https://kit.fontawesome.com/da1cc78f01.js" crossorigin="anonymous"></script>
+
+
+</head>
+<body>
+{% include "components/header.html" %}
+
+<main class="flex flex-col w-full min-h-screen">
+    <header class="py-10 bg-stone-100">
+        <h2 class="container text-stone-800
+        mx-auto px-6 text-5xl  text-center
+        font-medium uppercase title-font">
+            {% block page_title %} DEFAULT PAGE TITLE {% endblock %}
+        </h2>
+    </header>
+
+    <section class="container h-full mx-auto space-y-8 my-8 flex flex-col ">
+        {% block main %}
+        ...
+        {% endblock %}
+    </section>
+
+</main>
+
+{% include "components/footer.html" %}
+
+<script src="{{ url_for('static',path='/js/main.js') }}" defer></script>
+</body>
+</html>

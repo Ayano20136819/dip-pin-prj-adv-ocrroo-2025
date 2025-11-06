@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.16",
+    "tailwindcss": "^4.1.16"
+  },
+  "scripts": {
+    "dev:css": "npx @tailwindcss/cli -i ./static/css/input.css -o ./static/css/output.css --watch",
+    "dev:api": "uv run fastapi dev main.py",
+    "dev": "npx npm-run-all --parallel dev:*"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5",
+    "tailwindcss": "^3.4.0",
+    "@tailwindcss/cli": "^4.0.0"
+  }
+
+}

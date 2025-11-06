@@ -1,22 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<header>
-    <h2>OCRROO</h2>
-</header>
+{% extends "base.html" %}
+
+{% block title %} Home {% endblock title %}
+
+{% block page_title %}
+    OCRROO
+{% endblock %}
+
+<!-- Footer of Page -->
+{% block base_footer %}
+<p class="text-gray-500 text-left px-2 font-medium uppercase title-font mb-4 border-b border-gray-500 w-full">
+    Home Page
+</p>
+{% endblock %}
+
+{% block main %}
+
+<section class="flex flex-col items-center">
+    <video id="videoPlayer" width="320" height="240" controls
+    class="w-2xl object-cover object-center p-5">
+      <source id="videoSource" type="video/mp4">
+    </video>
+
+    <p class="p-4 font-semibold">Please select a video</p>
+
+    <input id="videoInput" type="file" accept="video/*"
+         class="bg-stone-500 hover:bg-stone-700 text-white font-bold p-2 rounded cursor-pointer"/>
 
 
-<main>
-    <section>
+</section>
 
-        <p>{{ text }}</p>
 
-    </section>
-</main>
 
-</body>
-</html>
+{% endblock %}
+
