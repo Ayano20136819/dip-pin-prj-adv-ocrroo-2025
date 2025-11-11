@@ -3,7 +3,8 @@ const input = document.getElementById("videoInput");
 const video = document.getElementById("videoPlayer");
 const source = document.getElementById("videoSource");
 const start_btn = document.getElementById("videoStart")
-const current_time = document.getElementById("")
+const timeElement = document.getElementById("timeDisplay")
+
 
 input.addEventListener("change", e => {
     const file = input.files[0];
@@ -26,3 +27,12 @@ start_btn.addEventListener("click", () =>{
     }
 
 });
+
+video.ontimeupdate = function(){
+    const currentTime = video.currentTime;
+    const minutes = Math.floor(currentTime / 60);
+    const seconds = Math.floor(currentTime % 60);
+    const formattedSeconds = seconds < 10 ? `0${seconds}` : seconds
+    // console.log(currentTime)
+    timeElement.textContent = `${minutes}:${formattedSeconds}`;
+};
