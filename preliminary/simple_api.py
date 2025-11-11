@@ -14,6 +14,7 @@ from pydantic import BaseModel
 from library_basics import CodingVideo
 from pathlib import Path
 
+
 app = FastAPI()
 
 
@@ -24,6 +25,9 @@ app = FastAPI()
 VIDEOS: dict[str, Path] = {
     "demo": Path(__file__).parent.parent / "resources" / "oop.mp4"
 }
+
+
+
 
 class VideoMetaData(BaseModel):
     fps: float
@@ -80,7 +84,7 @@ def video(vid: str):
         video.capture.release()
 
 
-@app.get("/video/{vid}/frame/{t}", response_class=Response)
+@app.get("/frame/{t}", response_class=Response)
 def video_frame(vid: str, t: float):
     try:
         video = _open_vid_or_404(vid)

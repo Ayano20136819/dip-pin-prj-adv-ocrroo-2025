@@ -5,16 +5,17 @@ Drive the API to complete "interprocess communication"
 Requirements
 """
 import io
+import os.path
 
 import pytesseract
 from PIL import Image
-from fastapi import FastAPI, HTTPException, Request
-from fastapi.responses import HTMLResponse
+from fastapi import FastAPI, HTTPException, Request, File, UploadFile
+from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi import Response
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
 from fastapi.staticfiles import StaticFiles
-
+from video import CodingVideo
 from preliminary.library_basics import CodingVideo
 from pathlib import Path
 
@@ -22,6 +23,8 @@ app = FastAPI(title="OCRROO")
 
 BASE_PATH = Path(__file__).parent
 print(BASE_PATH)
+UPLOAD_PATH = Path("/uploads")
+
 
 app.mount("/static",
           StaticFiles(directory="static"),
@@ -34,8 +37,11 @@ app.mount("/js",
           StaticFiles(directory="static/js"),
           name="js")
 
+app.mount("/uploads", StaticFiles(directory="/"), name="uploads")
+
 
 templates = Jinja2Templates(directory="templates")
+
 
 
 @app.get("/", response_class=HTMLResponse)
@@ -44,6 +50,15 @@ async def home(request: Request):
         request = request,
         name="pages/home.html",
     )
+
+@app.post("/upload_frame")
+async def upload_frame(file: UploadFile = File(...)):
+    file_location = os.path.join(UPLOAD_PATH, file.filename)
+    with open(file_location, "wb") as file:
+        file.write(await file.read())
+    return JSONResponse({"message": f"Frame saved as {file_location}"})
+
+
 
 
 # We'll create a lightweight "database" for our videos

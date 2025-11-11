@@ -18,6 +18,7 @@ import numpy as np
 from PIL import Image
 import pytesseract
 
+
 # Home
 #pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
@@ -26,8 +27,7 @@ pytesseract.pytesseract.tesseract_cmd = r'C:\Users\SASAKA.TDM\source\repo\tesser
 
 
 
-VID_PATH = Path("../resources/oop.mp4")
-OUT_PATH = Path("../resources/")
+
 
 class CodingVideo:
     capture: cv2.VideoCapture
