@@ -21,32 +21,33 @@
       <source id="videoSource" type="video/mp4">
     </video>
 
-    <div class="flex flex-row justify-around item-center">
+    <div class="flex flex-row justify-around items-center m-2 mb-4">
         <p class="m-2 font-semibold">Please select a video</p>
 
     <input id="videoInput" type="file" accept="video/*"
-         class="bg-stone-500 hover:bg-stone-700 text-white font-bold p-2 rounded cursor-pointer"/>
+         class="bg-stone-500 hover:bg-stone-700 text-white font-bold p-2 rounded cursor-pointer m-2"/>
     </div>
 
-
-</section>
-
-<section class="flex flex-col items-center">
-    <div class="w-full flex flex-row justify-around">
+    <div class="w-full flex flex-row justify-center m-2">
         <a href="#"
-    class="bg-stone-500 hover:bg-stone-700 text-white font-bold p-2 rounded cursor-pointer">
+                class="bg-stone-500 hover:bg-stone-700
+                       text-white font-bold p-2 rounded cursor-pointer"
+            id="videoStart">
         Play a Video</a>
+
+        <p class="m-2">TimeStamp:
+            <span class="m-2" id="timeDisplay">00:00</span>
+        </p>
+
     <a href="#"
     class="bg-stone-500 hover:bg-stone-700 text-white font-bold p-2 rounded cursor-pointer">
         Capture a frame</a>
     </div>
 
+    <p>Show outputs</p>
 
-    <div>
-        <p>TimeStamp</p>
-        <p>00:00</p>
-        Show outputs
-    </div>
+
+
 
     <div class="w-full flex flex-row justify-around">
         <a href="#"
