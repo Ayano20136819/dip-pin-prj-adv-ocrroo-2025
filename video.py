@@ -20,13 +20,15 @@ import pytesseract
 
 
 # Home
-#pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
 # TAFE PC
-pytesseract.pytesseract.tesseract_cmd = r'C:\Users\SASAKA.TDM\source\repo\tesseract\tesseract.exe'
+#pytesseract.pytesseract.tesseract_cmd =
+# r'C:\Users\SASAKA.TDM\source\repo\tesseract\tesseract.exe'
 
 
-
+VID_PATH = Path("../resources/oop.mp4")
+OUT_PATH = Path("../uploads/")
 
 
 class CodingVideo:
@@ -101,16 +103,8 @@ class CodingVideo:
             raise ValueError("Failed to encode frame")
         return buf.tobytes()
 
-
-
-
     def save_as_image(self, seconds: int, output_path: Path | str = 'output.png') -> None:
       """Saves the given frame as a png image
-
-      # TODO: Requires a third-party library to convert ndarray to png
-      # TODO: Identify the library and add a reference to its documentation
-
-
       """
       if type(output_path) is str:
             output_path = OUT_PATH/output_path

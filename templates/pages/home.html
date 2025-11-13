@@ -29,26 +29,31 @@
     </div>
 
     <div class="w-full flex flex-row justify-center m-2">
-        <button type="button"
+        <p class="font-semibold m-2">TimeStamp:
+            <span class="mr-3" id="timeDisplay">00:00</span>
+        </p>
+
+        <div>
+            <button type="button"
                 class="bg-stone-500 hover:bg-stone-700
                        text-white font-bold p-2 rounded cursor-pointer"
             id="videoStart">
         Play a Video</button>
 
-        <p class="font-semibold m-2">TimeStamp:
-            <span class="mr-3" id="timeDisplay">00:00</span>
-        </p>
-
-    <button id="captureFrame"
-    class="bg-stone-500 hover:bg-stone-700 text-white font-bold p-2 rounded cursor-pointer">
+            <button id="captureFrame" type="button"
+                    class="bg-stone-500 hover:bg-stone-700
+                    text-white font-bold p-2 rounded cursor-pointer">
         Capture a frame</button>
+        </div>
+
+
+
     </div>
 
     <div class="m-2">
         <h4>Show outputs</h4>
-        <canvas width="640" height="360" class="border">
-
-        </canvas>
+        <canvas width="640" height="360" class="border"></canvas>
+        <img id="frameImg" src="">
         <pre id="metadata-info"></pre>
     </div>
 

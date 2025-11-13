@@ -9,7 +9,7 @@ import os.path
 
 import pytesseract
 from PIL import Image
-from fastapi import FastAPI, HTTPException, Request, File, UploadFile
+from fastapi import FastAPI, HTTPException, Request, File, UploadFile, Form
 from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi import Response
 from fastapi.templating import Jinja2Templates
@@ -18,13 +18,14 @@ from fastapi.staticfiles import StaticFiles
 from video import CodingVideo
 from preliminary.library_basics import CodingVideo
 from pathlib import Path
+import shutil
 
 app = FastAPI(title="OCRROO")
 
 BASE_PATH = Path(__file__).parent
 print(BASE_PATH)
-UPLOAD_PATH = Path("/uploads")
-
+UPLOAD_PATH = BASE_PATH / "uploads"
+os.makedirs(UPLOAD_PATH, exist_ok=True)
 
 app.mount("/static",
           StaticFiles(directory="static"),
@@ -37,7 +38,7 @@ app.mount("/js",
           StaticFiles(directory="static/js"),
           name="js")
 
-app.mount("/uploads", StaticFiles(directory="/"), name="uploads")
+app.mount("/uploads", StaticFiles(directory=UPLOAD_PATH), name="uploads")
 
 
 templates = Jinja2Templates(directory="templates")
@@ -51,15 +52,27 @@ async def home(request: Request):
         name="pages/home.html",
     )
 
-@app.post("/upload_frame")
-async def upload_frame(file: UploadFile = File(...)):
-    file_location = os.path.join(UPLOAD_PATH, file.filename)
-    with open(file_location, "wb") as file:
-        file.write(await file.read())
-    return JSONResponse({"message": f"Frame saved as {file_location}"})
 
+@app.post("/capture_frame")
+async def capture_frame(video_file: UploadFile = File(...), timestamp: float = Form(...)):
+    try:
 
+        temp_path = Path("uploads") / video_file.filename
+        with open(temp_path, "wb") as buffer:
+            shutil.copyfileobj(video_file.file, buffer)
 
+        video = CodingVideo(temp_path)
+
+        output_filename = f"frame_{int(timestamp * 1000)}ms.png"
+        output_path = Path(UPLOAD_PATH / output_filename)
+
+        video.save_as_image(seconds=int(timestamp), output_path=str(output_path))
+        file_url = f"/uploads/{output_filename}"
+
+        return {"message": "Success", "file_url": file_url}
+
+    except Exception as e:
+        return JSONResponse({"message": "Error", "error": str(e)}, status_code=400)
 
 # We'll create a lightweight "database" for our videos
 # You can add uploads later (not required for assessment)

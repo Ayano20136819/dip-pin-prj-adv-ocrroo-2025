@@ -46,35 +46,46 @@ document.addEventListener("DOMContentLoaded", () => {
     const canvas = document.querySelector("canvas")
     const ctx = canvas.getContext("2d")
     const metadataInfo = document.querySelector("#metadata-info");
-    captureBtn.addEventListener("click", function (){
-        const updateCanvas = function (now) {
-            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-            const metadata = {
-                width: video.videoWidth,
-                height: video.videoHeight,
-                duration: video.duration,
-                currentTime: video.currentTime
-            };
-            metadataInfo.innerText = JSON.stringify(metadata, null, 2);
+    const img = document.getElementById("frameImg")
+    //
+    // captureBtn.addEventListener("click", e => {
+    //     ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+    //
+    //     canvas.toBlob((blob) => {
+    //         const url = URL.createObjectURL(blob);
+    //         const a = document.createElement("a");
+    //         a.href = url;
+    //         a.download = "frame.png";
+    //         a.click();
+    //         URL.revokeObjectURL(url);
+    //     }, "image/png");
+    // });
 
-            canvas.toBlob((blob) => {
-                const formData = new FormData();
-                formData.append("file", blob, "frame.png");
 
-                // upload to FastAPI
-                fetch("/upload_frame", {
-                    method: "post",
-                    body: formData
-                })
-            }, "img/png");
+    captureBtn.addEventListener("click", async() => {
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-            video.requestVideoFrameCallback(updateCanvas)
-        }
 
-        video.requestVideoFrameCallback(updateCanvas)
 
+        canvas.toBlob(async (blob) => {
+
+            const video_file = input.files[0];
+            const timestamp = video.currentTime;
+
+             const formData = new FormData();
+            formData.append("video_file", video_file);
+            formData.append("timestamp", timestamp);
+
+            const response = await fetch("/capture_frame", {
+                            method: "POST",
+                            body: formData,
+            });
+            const result = await response.json();
+            console.log(result);
+        });
     });
 
-});
+
+}); // end DOM
 
 
