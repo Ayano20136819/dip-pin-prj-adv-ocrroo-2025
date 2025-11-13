@@ -71,9 +71,24 @@ document.addEventListener("DOMContentLoaded", () => {
                     console.log(data.text);
                     document.getElementById("transcripts").innerText = data.text;
                 })
-            const result = await response.json();
-            console.log(result);
+            // const result = await response.json();
+            // console.log(result);
         });
+    });
+
+
+    const saveFileBtn = document.getElementById("saveFile");
+    saveFileBtn.addEventListener("click", async() => {
+
+        const transcripts = document.getElementById("transcripts");
+        const formData = new FormData();
+        formData.append("text", transcripts.innerText);
+        console.log(formData);
+
+        const response = await fetch("/save_file", {
+            method: "POST",
+            body: formData,
+        })
     });
 
 

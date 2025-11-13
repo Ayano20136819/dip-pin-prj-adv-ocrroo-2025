@@ -6,6 +6,7 @@ Requirements
 """
 import io
 import os.path
+from tkinter import Text
 
 import pytesseract
 from PIL import Image
@@ -77,6 +78,14 @@ async def capture_frame(video_file: UploadFile = File(...), timestamp: float = F
 
     except Exception as e:
         return JSONResponse({"message": "Error", "error": str(e)}, status_code=400)
+
+
+
+@app.post("/save_file")
+async def save_file(text: str = Form(...)):
+    with open("sample_code/sample_code.txt", "w", encoding="utf-8") as file:
+        file.write(text)
+
 
 # We'll create a lightweight "database" for our videos
 # You can add uploads later (not required for assessment)
