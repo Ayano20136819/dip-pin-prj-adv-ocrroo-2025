@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const start_btn = document.getElementById("videoStart")
     const timeElement = document.getElementById("timeDisplay")
     const captureBtn = document.getElementById("captureFrame")
+    const transcripts  = document.getElementById("transcripts")
     let url = null;
 
     input.addEventListener("change", e => {
@@ -47,20 +48,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const ctx = canvas.getContext("2d")
     const metadataInfo = document.querySelector("#metadata-info");
     const img = document.getElementById("frameImg")
-    //
-    // captureBtn.addEventListener("click", e => {
-    //     ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-    //
-    //     canvas.toBlob((blob) => {
-    //         const url = URL.createObjectURL(blob);
-    //         const a = document.createElement("a");
-    //         a.href = url;
-    //         a.download = "frame.png";
-    //         a.click();
-    //         URL.revokeObjectURL(url);
-    //     }, "image/png");
-    // });
-
 
     captureBtn.addEventListener("click", async() => {
         ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
@@ -79,7 +66,11 @@ document.addEventListener("DOMContentLoaded", () => {
             const response = await fetch("/capture_frame", {
                             method: "POST",
                             body: formData,
-            });
+            }).then(response => response.json())
+                .then(data => {
+                    console.log(data.text);
+                    document.getElementById("transcripts").innerText = data.text;
+                })
             const result = await response.json();
             console.log(result);
         });

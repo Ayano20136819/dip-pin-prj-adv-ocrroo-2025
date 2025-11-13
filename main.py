@@ -69,7 +69,11 @@ async def capture_frame(video_file: UploadFile = File(...), timestamp: float = F
         video.save_as_image(seconds=int(timestamp), output_path=str(output_path))
         file_url = f"/uploads/{output_filename}"
 
-        return {"message": "Success", "file_url": file_url}
+        img_bytes = video.get_image_as_bytes(timestamp)
+        img = Image.open(io.BytesIO(img_bytes))
+        text = pytesseract.image_to_string(img)
+
+        return JSONResponse({"text": text}, status_code=200)
 
     except Exception as e:
         return JSONResponse({"message": "Error", "error": str(e)}, status_code=400)

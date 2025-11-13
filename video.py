@@ -125,11 +125,6 @@ class CodingVideo:
 
 
 
-
-
-
-
-
 def test():
     """Try out your class here"""
     oop = CodingVideo("../resources/oop.mp4")

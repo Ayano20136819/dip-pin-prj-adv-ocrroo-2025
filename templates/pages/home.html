@@ -45,17 +45,29 @@
                     text-white font-bold p-2 rounded cursor-pointer">
         Capture a frame</button>
         </div>
-
-
-
     </div>
+</section>
+<section class="flex justify-center">
+    <div class="m-2 p-4 pl-6 pr-6 bg-stone-200">
+             <h4 class="text-stone-700 font-bold text-center
+                        text-2xl mb-2">
+                 Current Frame</h4>
+            <canvas width="320" height="200" class="bg-white shadow-xs"></canvas>
+            <img id="frameImg" src="">
+            <pre id="metadata-info"></pre>
+        </div>
+        <div class="m-2 p-4 pl-6 pr-6 bg-stone-200">
+            <h4 class="text-stone-700 font-bold text-center
+                        text-2xl mb-2">
+                Show Transcripts</h4>
+            <div class="h-50 min-w-100 p-2 overflow-y-auto
+                        bg-white shadow-xs"
+                 id="transcripts">
+                Sample code
+            </div>
+        </div>
+</section>
 
-    <div class="m-2">
-        <h4>Show outputs</h4>
-        <canvas width="640" height="360" class="border"></canvas>
-        <img id="frameImg" src="">
-        <pre id="metadata-info"></pre>
-    </div>
 
 
 
@@ -69,7 +81,7 @@
         class="bg-stone-500 hover:bg-stone-700 text-white font-bold p-2 rounded cursor-pointer">
             Save to file</a>
     </div>
-</section>
+
 
 
 
