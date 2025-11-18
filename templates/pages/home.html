@@ -3,7 +3,7 @@
 {% block title %} Home {% endblock title %}
 
 {% block page_title %}
-    OCRROO
+     OCRROO
 {% endblock %}
 
 <!-- Footer of Page -->
@@ -15,11 +15,21 @@
 
 {% block main %}
 
-<section class="flex flex-col items-center max-w-4xl mx-auto mt-6">
-    <video id="videoPlayer" width="640" height="380" controls
-    class="object-cover object-center">
-      <source id="videoSource" type="video/mp4">
-    </video>
+<div class="flex align-center m-2 w-full"
+         id="inputNameArea">
+    <label class="font-semibold">Please enter your name
+        <input type="text"
+            id="inputName" CLASS="border m-2">
+    </label>
+    <button id="saveName"  type="button"
+            class="bg-stone-500 hover:bg-stone-700 mx-2
+                text-white font-bold p-2 rounded cursor-pointer">
+        Save Name</button>
+</div>
+
+<section class="flex flex-col items-center max-w-4xl mx-auto mt-4">
+
+
 
     <div class="flex flex-row w-full justify-around items-center mt-2 mb-4">
         <p class="m-2 font-semibold">Please select a video</p>
@@ -28,17 +38,22 @@
          class="bg-stone-500 hover:bg-stone-700 text-white font-bold p-2 rounded cursor-pointer m-2"/>
     </div>
 
-    <div class="w-full flex flex-row justify-around m-2">
+    <video id="videoPlayer" width="640" height="380" controls
+    class="object-cover object-center">
+      <source id="videoSource" type="video/mp4">
+    </video>
+
+    <div class="w-full flex flex-row justify-around m-2 mt-4">
         <p class="font-semibold m-2">TimeStamp:
             <span class="mr-3" id="timeDisplay">00:00</span>
         </p>
 
         <div>
-            <button type="button"
-                class="bg-stone-500 hover:bg-stone-700 mx-2
-                       text-white font-bold p-2 rounded cursor-pointer"
-            id="videoStart">
-        Play a Video</button>
+<!--            <button type="button"-->
+<!--                class="bg-stone-500 hover:bg-stone-700 mx-2-->
+<!--                       text-white font-bold p-2 rounded cursor-pointer"-->
+<!--            id="videoStart">-->
+<!--        Play a Video</button>-->
 
             <button id="captureFrame" type="button"
                     class="bg-stone-500 hover:bg-stone-700 mx-2

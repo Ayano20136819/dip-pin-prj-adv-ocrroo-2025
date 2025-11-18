@@ -23,16 +23,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    start_btn.addEventListener("click", () =>{
-        if(video.paused){
-            video.play();
-            start_btn.textContent = "Pause a video";
-        }else{
-            video.pause();
-            start_btn.textContent = "Play a video";
-        }
-
-    });
+    // start_btn.addEventListener("click", () =>{
+    //     if(video.paused){
+    //         video.play();
+    //         start_btn.textContent = "Pause a video";
+    //     }else{
+    //         video.pause();
+    //         start_btn.textContent = "Play a video";
+    //     }
+    //
+    // });
 
     video.ontimeupdate = function(){
         const currentTime = video.currentTime;
@@ -87,6 +87,23 @@ document.addEventListener("DOMContentLoaded", () => {
             method: "POST",
             body: formData,
         })
+    });
+
+    // const bookmarkBtn = document.getElementById("createBookmark");
+    // bookmarkBtn.addEventListener("click", ()=>{
+    //     browser.bookmark.create();
+    //    console.log("Added to a bookmark");
+    // });
+
+    const inputNameArea = document.getElementById("inputNameArea");
+    const inputName = document.getElementById("inputName");
+    const nameBtn = document.getElementById("saveName");
+    const pageTitle = document.getElementById("pageTitle");
+
+    nameBtn.addEventListener("click", ()=>{
+        name = inputName.value;
+       pageTitle.textContent = `Welcome to OCRRO ${name}` ;
+       inputNameArea.style.display = 'none'
     });
 
 

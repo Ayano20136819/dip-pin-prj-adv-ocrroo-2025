@@ -79,9 +79,9 @@ You will validate your design by meeting with a user representative: the product
 ##### What will you change before the next meeting
 
 - [ ] personalize GUI (username or bookmark)
-- [ ] choose file button move to above a video area
+- [x] remove play-pause a video button
+- [x] choose file button move to above a video area
 - [ ] edit timestamp manually (no commitment to complete this)
-- [ ] select a video from library server, so users do not need to download videos from YouTube, and just choose accessible provided videos from library server. (no commitment to complete this)
 
 
 ##### Were there any questions that needed to be discussed with the user
