@@ -34,7 +34,6 @@ OUT_PATH = Path("../uploads/")
 class CodingVideo:
     capture: cv2.VideoCapture
 
-
     def __init__(self, video: Path | str):
         self.capture = cv2.VideoCapture(video)
         if not self.capture.isOpened():

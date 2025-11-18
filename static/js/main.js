@@ -52,14 +52,12 @@ document.addEventListener("DOMContentLoaded", () => {
     captureBtn.addEventListener("click", async() => {
         ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-
-
         canvas.toBlob(async (blob) => {
 
             const video_file = input.files[0];
             const timestamp = video.currentTime;
 
-             const formData = new FormData();
+            const formData = new FormData();
             formData.append("video_file", video_file);
             formData.append("timestamp", timestamp);
 

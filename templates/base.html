@@ -18,7 +18,7 @@
 <body>
 {% include "components/header.html" %}
 
-<main class="flex flex-col w-full min-h-screen">
+<main class="flex flex-col w-full">
     <header class="py-10 bg-stone-100">
         <h2 class="container text-stone-800
         mx-auto px-6 text-5xl  text-center
@@ -27,7 +27,7 @@
         </h2>
     </header>
 
-    <section class="container h-full mx-auto space-y-8 my-8 flex flex-col ">
+    <section class="container mx-auto space-y-8 my-8 flex flex-col ">
         {% block main %}
         ...
         {% endblock %}
