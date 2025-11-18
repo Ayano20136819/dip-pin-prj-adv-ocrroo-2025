@@ -59,31 +59,34 @@ You will validate your design by meeting with a user representative: the product
 
 ##### Meeting minutes
 
-- [x] Meeting held on [04/11]
+- [x] Meeting held on [18/11]
 - [x] Persona discussed: [Oliver]
-- [x] Design artefacts reviewed: [wireframe]
+- [x] Design artefacts reviewed: [initial prototype]
 - [x] Issues discussed: [ability to seek a timestamp]
 - [x] Feedback provided: [ select a video from library server ]
 
 ##### What worked well
 
 - [x] tab navigations
+- [x] timestamp 
 
 ##### What could be improved
 
 - [ ] select a video from library server (no commitment to complete this)
-- [x] Add a save to file button
+- [ ] personalize GUI (username or bookmark)
+- [ ] choose file button move to above a video area
 
 ##### What will you change before the next meeting
 
-- [x] remove a show output button
+- [ ] personalize GUI (username or bookmark)
+- [ ] choose file button move to above a video area
+- [ ] edit timestamp manually (no commitment to complete this)
 - [ ] select a video from library server, so users do not need to download videos from YouTube, and just choose accessible provided videos from library server. (no commitment to complete this)
 
 
 ##### Were there any questions that needed to be discussed with the user
 
-- [ ] Do you want to change timestamp by manually? 
-- [ ] Do you want a shortcut keys such as 5 seconds skip or back ?
+- [ ] 
 
 #### Lecturer's checklist (to be used by the lecturer)
 
@@ -92,5 +95,11 @@ You will validate your design by meeting with a user representative: the product
 - [x] Design artifacts are present and easy to follow
 - [x] Design decisions are based on user needs and goals
 - [x] Appropriate considerations of interaction patterns appropriate for the user
-- [n/a] Efforts towards realizing at least one significant issue involving user interaction
+- [x] Efforts towards realizing at least one significant issue involving user interaction
 - [x] Whole team engagement in the design process
+
+
+
+  
+18/11/2025  
+![1811.png](..%2Fresources%2F1811.png)

@@ -1,0 +1,33 @@
+>>> class User:
++ ems pass
+
+>>> userl = User()
+
+>>> userl.first_name = "Dave"
+>>> user1.last_name = “Bowman”
+>>>
+
+>>> print(user1.first_name)
+Dave
+
+>>> print(user1.last_name)
+Bowman
+
+>>>
+
+>>> first_name = "Arthur"
+
+>>> last_name = "Clarke"
+
+>>>
+
+>>> print(first_name, last_name)
+
+Arthur Clarke
+
+>>>
+
+>>> print(user1.first_name, user1.last_name)
+Dave Bowman
+
+>>>

@@ -1,7 +1,7 @@
 """Provides a simple API for your basic OCR client
 
 Drive the API to complete "interprocess communication"
-
+-
 Requirements
 """
 import io

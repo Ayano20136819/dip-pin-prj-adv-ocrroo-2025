@@ -10,4 +10,4 @@ node_modules
 # Virtual environments
 .venv
 uploads
-sample_code
+#sample_code
