@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const input = document.getElementById("videoInput");
     const video = document.getElementById("videoPlayer");
     const source = document.getElementById("videoSource");
-    const start_btn = document.getElementById("videoStart")
+    //const start_btn = document.getElementById("videoStart")
     const timeElement = document.getElementById("timeDisplay")
     const captureBtn = document.getElementById("captureFrame")
     const transcripts  = document.getElementById("transcripts")
@@ -15,12 +15,21 @@ document.addEventListener("DOMContentLoaded", () => {
             source.src = url;
             video.load();
             video.play();
-            if(video.play){
-                start_btn.textContent = "Pause a video";
-            }
             console.log(url);
         }
     });
+
+    timeElement.addEventListener("keydown", e => {
+        if(e.key === "Enter") {
+            const value = timeElement.value;
+             const [mm, ss] = value.split(":").map(Number);
+            const seconds = mm * 60 + ss;
+
+        if (!isNaN(seconds)) {
+            video.currentTime = seconds;
+        }
+        }
+    })
 
 
     // start_btn.addEventListener("click", () =>{
@@ -38,9 +47,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const currentTime = video.currentTime;
         const minutes = Math.floor(currentTime / 60);
         const seconds = Math.floor(currentTime % 60);
+        const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes
         const formattedSeconds = seconds < 10 ? `0${seconds}` : seconds
         // console.log(currentTime)
-        timeElement.textContent = `${minutes}:${formattedSeconds}`;
+        timeElement.value = `${formattedMinutes}:${formattedSeconds}`;
     };
 
 
@@ -87,6 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
             method: "POST",
             body: formData,
         })
+        console.log("Save code to sample_code file");
     });
 
     // const bookmarkBtn = document.getElementById("createBookmark");

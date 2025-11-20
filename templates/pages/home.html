@@ -15,11 +15,11 @@
 
 {% block main %}
 
-<div class="flex align-center m-2 w-full"
+<div class="flex align-center justify-center m-2 w-full"
          id="inputNameArea">
     <label class="font-semibold">Please enter your name
         <input type="text"
-            id="inputName" CLASS="border m-2">
+            id="inputName" CLASS="border border-stone-600 m-2">
     </label>
     <button id="saveName"  type="button"
             class="bg-stone-500 hover:bg-stone-700 mx-2
@@ -44,10 +44,16 @@
     </video>
 
     <div class="w-full flex flex-row justify-around m-2 mt-4">
-        <p class="font-semibold m-2">TimeStamp:
-            <span class="mr-3" id="timeDisplay">00:00</span>
-        </p>
+<!--        <p class="font-semibold m-2">TimeStamp:-->
+<!--            <span class="mr-3" id="timeDisplay">00:00</span>-->
+<!--        </p>-->
 
+        <label class="font-semibold m-2">TimeStamp:
+        <input class="mr-3"
+               type="text"
+               id="timeDisplay"
+                value="00:00"/>
+        </label>
         <div>
 <!--            <button type="button"-->
 <!--                class="bg-stone-500 hover:bg-stone-700 mx-2-->
@@ -62,13 +68,14 @@
         </div>
     </div>
 </section>
-<section class="flex justify-center items-start flex-wrap ">
+<section class="flex flex-wrap items-center justify-center max-w-4xl mx-auto mt-4">
     <div class="m-2 p-4 pl-6 pr-6 bg-stone-200">
              <h4 class="text-stone-700 font-bold text-center
                         text-2xl mb-2">
                  Current Frame</h4>
             <canvas width="320" height="200" class="bg-white shadow-xs"></canvas>
-            <img id="frameImg" src="">
+            <img  id="frameImg" src="">
+
             <pre id="metadata-info"></pre>
         </div>
         <div class="m-2 p-4 pl-6 pr-6 bg-stone-200">
