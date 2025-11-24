@@ -22,6 +22,10 @@ source .venv/Scripts/activate
 pip install pyproject-toml
 ```
 
+#### Install TailwindCSS
+https://tailwindcss.com/docs/installation/tailwind-cli
+
+
 #### Core dependencies
 
 > opencv-python  
@@ -39,11 +43,20 @@ pip install pyproject-toml
 > fastapi
 > FastAPI is a modern, fast (high-performance), web framework for building APIs with Python  
 > https://fastapi.tiangolo.com/
+> 
+
+> TaildwindCSS  
+> A utility-first CSS framework packed with classes like flex, pt-4, text-center and 
+> rotate-90 that can be composed to build any design, directly in your markup.  
+> https://tailwindcss.com/
 
 
 #### Test run
 ```bash
-fastapi dev
+uvicorn main:app --reload --host 127.0.0.1 --port 8000
+or 
+npx npm-run-all --parallel dev:*  
+
 ```
 
 

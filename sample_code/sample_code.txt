@@ -1,5 +1,19 @@
 >>> class User:
-aie pass
+
+0% pass
 
 >>> userl = User()
+
+>>> userl.first_name = "Dave"
+>>> userl.last_name = "Bowman"
+>>>
+
+>>> print(user1.first_name)
+Dave
+
+>>> print(user1.last_name)
+Bowman
+
+>>>
+
 >>>

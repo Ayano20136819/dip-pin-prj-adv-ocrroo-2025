@@ -49,6 +49,7 @@
     --color-stone-100: oklch(97% 0.001 106.424);
     --color-stone-200: oklch(92.3% 0.003 48.717);
     --color-stone-500: oklch(55.3% 0.013 58.071);
+    --color-stone-600: oklch(44.4% 0.011 73.639);
     --color-stone-700: oklch(37.4% 0.01 67.558);
     --color-stone-800: oklch(26.8% 0.007 34.298);
     --color-black: #000;
@@ -307,6 +308,9 @@
   .min-w-100 {
     min-width: calc(var(--spacing) * 100);
   }
+  .rotate-90 {
+    rotate: 90deg;
+  }
   .cursor-pointer {
     cursor: pointer;
   }
@@ -324,9 +328,6 @@
   }
   .items-center {
     align-items: center;
-  }
-  .items-start {
-    align-items: flex-start;
   }
   .justify-around {
     justify-content: space-around;
@@ -366,6 +367,9 @@
   }
   .border-gray-500 {
     border-color: var(--color-gray-500);
+  }
+  .border-stone-600 {
+    border-color: var(--color-stone-600);
   }
   .bg-gray-300 {
     background-color: var(--color-gray-300);
