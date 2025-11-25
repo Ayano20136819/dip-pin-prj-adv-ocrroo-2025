@@ -59,6 +59,7 @@ npx npm-run-all --parallel dev:*
 
 ```
 
+![homepage.png](resources%2Fhomepage.png)
 
 
 

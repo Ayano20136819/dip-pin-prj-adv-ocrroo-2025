@@ -34,7 +34,7 @@ Complete the steps below and fill in the `> block` sections
 3. Activate the `venv` as instructed by `uv`
 4. In order to complete the project, we need to install OpenCV. Fill in the following:
   - What role does OpenCV have in this project?
-  >
+  > Handling videos using OpenCV such as playing, get duration from videos.
   - What is the `uv pip` command to install OpenCV?
   > `uv pip install opencv-python`
   - What is the URL of this library's git repo?

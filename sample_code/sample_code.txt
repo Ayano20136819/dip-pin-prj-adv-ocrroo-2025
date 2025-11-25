@@ -1,19 +1,6 @@
->>> class User:
+class User:
+def _ init__(self, full_name, birthday):
+self.name = full_name
+self.birthday = birthday # yyyymmdd
 
-0% pass
-
->>> userl = User()
-
->>> userl.first_name = "Dave"
->>> userl.last_name = "Bowman"
->>>
-
->>> print(user1.first_name)
-Dave
-
->>> print(user1.last_name)
-Bowman
-
->>>
-
->>>
+user = User(

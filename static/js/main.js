@@ -110,12 +110,27 @@ document.addEventListener("DOMContentLoaded", () => {
     const inputName = document.getElementById("inputName");
     const nameBtn = document.getElementById("saveName");
     const pageTitle = document.getElementById("pageTitle");
+    const alert = document.getElementById("alert");
 
     nameBtn.addEventListener("click", ()=>{
         name = inputName.value;
-       pageTitle.textContent = `Welcome to OCRRO ${name}` ;
-       inputNameArea.style.display = 'none'
+        if (validateName(name)){
+            pageTitle.textContent = `Welcome to OCRROO ${name}` ;
+            inputNameArea.style.display = 'none';
+            alert.style.display = 'none';
+        }
+
+        alert.textContent = "Please enter a validate name";
+
     });
+
+    function validateName(name){
+        var namePatten = /^[a-zA-Z\s-]+$/;
+        if(!namePatten.test(name)){
+            return false
+        }
+        return true
+    }
 
 
 }); // end DOM
